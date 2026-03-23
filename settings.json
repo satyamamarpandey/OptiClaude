@@ -1,0 +1,109 @@
+{
+  "extraKnownMarketplaces": {
+    "everything-claude-code": {
+      "source": {
+        "source": "github",
+        "repo": "affaan-m/everything-claude-code"
+      }
+    }
+  },
+  "enabledPlugins": {
+    "everything-claude-code@everything-claude-code": true
+  },
+  "model": "sonnet",
+  "env": {
+    "MAX_THINKING_TOKENS": "10000",
+    "CLAUDE_AUTOCOMPACT_PCT_OVERRIDE": "50",
+    "CLAUDE_CODE_SUBAGENT_MODEL": "haiku"
+  },
+  "autoUpdatesChannel": "latest",
+  "hooks": {
+    "PreToolUse": [
+      {
+        "matcher": "Bash",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "cmd /c node %USERPROFILE%\\.claude\\helpers\\hook-handler.cjs pre-bash",
+            "timeout": 5000
+          }
+        ]
+      },
+      {
+        "matcher": "Write|Edit|MultiEdit",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "cmd /c node %USERPROFILE%\\.claude\\helpers\\hook-handler.cjs pre-edit",
+            "timeout": 5000
+          }
+        ]
+      }
+    ],
+    "PostToolUse": [
+      {
+        "matcher": "Write|Edit|MultiEdit",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "cmd /c node %USERPROFILE%\\.claude\\helpers\\hook-handler.cjs post-edit",
+            "timeout": 10000
+          }
+        ]
+      },
+      {
+        "matcher": "Bash",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "cmd /c node %USERPROFILE%\\.claude\\helpers\\hook-handler.cjs post-bash",
+            "timeout": 5000
+          }
+        ]
+      }
+    ],
+    "UserPromptSubmit": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "cmd /c node %USERPROFILE%\\.claude\\helpers\\hook-handler.cjs route",
+            "timeout": 10000
+          }
+        ]
+      }
+    ],
+    "SessionStart": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "cmd /c node %USERPROFILE%\\.claude\\helpers\\hook-handler.cjs session-restore",
+            "timeout": 15000
+          },
+          {
+            "type": "command",
+            "command": "cmd /c node %USERPROFILE%\\.claude\\helpers\\auto-memory-hook.mjs import",
+            "timeout": 8000
+          }
+        ]
+      }
+    ],
+    "SessionEnd": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "cmd /c node %USERPROFILE%\\.claude\\helpers\\hook-handler.cjs session-end",
+            "timeout": 10000
+          },
+          {
+            "type": "command",
+            "command": "cmd /c node %USERPROFILE%\\.claude\\helpers\\auto-memory-hook.mjs export",
+            "timeout": 8000
+          }
+        ]
+      }
+    ]
+  }
+}

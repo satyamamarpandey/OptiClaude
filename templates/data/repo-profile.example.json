@@ -1,0 +1,27 @@
+{
+  "project_name": "Example Project",
+  "project_type": "web app",
+  "main_language": "TypeScript",
+  "frameworks": [
+    "React",
+    "Vite"
+  ],
+  "runtime": "Node.js 20",
+  "package_manager": "npm",
+  "key_commands": {
+    "dev": "npm run dev",
+    "build": "npm run build",
+    "test": "npm test",
+    "lint": "npm run lint"
+  },
+  "important_paths": [
+    "src/",
+    "public/",
+    "package.json",
+    "README.md"
+  ],
+  "notes": [
+    "Replace these values with your real project info.",
+    "Use this file as a quick repo reference for repeated work."
+  ]
+}

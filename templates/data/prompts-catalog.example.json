@@ -1,0 +1,37 @@
+{
+  "prompts": [
+    {
+      "name": "bugfix",
+      "template_file": "bugfix-task.md",
+      "best_for": [
+        "repro issues",
+        "regressions",
+        "UI bugs"
+      ]
+    },
+    {
+      "name": "feature",
+      "template_file": "feature-request.md",
+      "best_for": [
+        "new functionality",
+        "safe extensions"
+      ]
+    },
+    {
+      "name": "review",
+      "template_file": "code-review.md",
+      "best_for": [
+        "PR review",
+        "risk scanning"
+      ]
+    },
+    {
+      "name": "docs",
+      "template_file": "docs-update.md",
+      "best_for": [
+        "README fixes",
+        "setup guides"
+      ]
+    }
+  ]
+}

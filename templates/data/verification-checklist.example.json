@@ -1,0 +1,17 @@
+{
+  "build": true,
+  "lint": true,
+  "tests": false,
+  "manual_checks": [
+    "happy path",
+    "error state",
+    "empty state",
+    "loading state",
+    "responsive layout"
+  ],
+  "security_checks": [
+    "no secrets exposed",
+    "no unsafe shell commands introduced"
+  ],
+  "notes": "Flip tests to true when you actually ran them."
+}

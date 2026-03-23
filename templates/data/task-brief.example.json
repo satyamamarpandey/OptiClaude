@@ -1,0 +1,19 @@
+{
+  "task_title": "Fix disappearing card on click",
+  "task_type": "bugfix",
+  "goal": "Prevent UI cards from disappearing when selected.",
+  "scope": [
+    "src/pages/Home.jsx",
+    "src/components/ShowcaseSection.jsx"
+  ],
+  "constraints": [
+    "Do not redesign the UI.",
+    "Keep current animation style unless directly causing the bug."
+  ],
+  "verification": [
+    "Clicking a card keeps it visible.",
+    "Layout does not jump unexpectedly.",
+    "Mobile and desktop behavior stay stable."
+  ],
+  "open_questions": []
+}
