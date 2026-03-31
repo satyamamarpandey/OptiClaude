@@ -1,24 +1,73 @@
+<div align="center">
+
 # OptiClaude
 
-A clean, practical, and beginner-friendly global Claude Code setup for Windows.
+### A clean, practical, and beginner-friendly global Claude Code setup for Windows, macOS, and Linux
 
-OptiClaude helps you set up Claude Code once and reuse that setup across:
+<p>
+  <img src="https://img.shields.io/badge/Claude%20Code-global%20setup-111827?style=for-the-badge" alt="Claude Code global setup">
+  <img src="https://img.shields.io/badge/platform-Windows%20%7C%20macOS%20%7C%20Linux-0f766e?style=for-the-badge" alt="Windows macOS Linux">
+  <img src="https://img.shields.io/badge/node-20%2B-2563eb?style=for-the-badge" alt="Node 20+">
+  <img src="https://img.shields.io/badge/setup-beginner%20friendly-7c3aed?style=for-the-badge" alt="Beginner friendly">
+</p>
 
-- your current projects
-- your future projects
-- your future Claude Code sessions
+<p>
+  <img src="https://img.shields.io/badge/scope-user--level-111827?style=flat-square" alt="User level">
+  <img src="https://img.shields.io/badge/templates-included-16a34a?style=flat-square" alt="Templates included">
+  <img src="https://img.shields.io/badge/helpers-optional-f59e0b?style=flat-square" alt="Helpers optional">
+  <img src="https://img.shields.io/badge/design-cross--platform-2563eb?style=flat-square" alt="Cross platform">
+</p>
 
-This repository is intentionally structured to be simple:
+</div>
 
-- `settings.json` for global Claude Code settings
-- `CLAUDE.md` for reusable global instructions
-- `helpers/` for optional hook helpers
-- `templates/` for reusable task templates
-- `templates/data/` for example data files used by the templates
+---
 
-The goal of this README is simple:
+> **OptiClaude** gives you a reusable **global Claude Code setup** so you can configure Claude once and carry that setup across current projects, future projects, and future Claude Code sessions.
 
-**make setup easy enough that a brand new user can install it without guessing**
+The goal is simple:
+
+- keep setup clean
+- keep it reusable
+- keep it easy for new users
+- make the install flow predictable across platforms
+
+---
+
+## Why use OptiClaude
+
+A lot of Claude Code setups become messy because users mix:
+
+- repo-level instructions
+- user-level settings
+- helper scripts
+- templates
+- plugins
+- MCP tools
+
+OptiClaude keeps the core setup organized so you can:
+
+1. configure Claude Code once
+2. reuse that setup everywhere
+3. add optional tools later without breaking the base setup
+
+---
+
+## What this setup gives you
+
+### Core global setup
+- global `settings.json`
+- global `CLAUDE.md`
+- reusable global Claude rules
+- optional helper scripts in your user Claude folder
+- optional templates in your user Claude folder
+
+### Optional extras
+- Ruflo MCP
+- Prompt Improver plugin
+- Code Review Graph plugin
+- Taskmaster AI MCP
+- Claude Mem plugin
+- Document Skills plugin
 
 ---
 
@@ -48,40 +97,27 @@ OptiClaude/
 
 ---
 
-## What this setup gives you
-
-### Core global setup
-- global `settings.json`
-- global `CLAUDE.md`
-- global Claude rules from Everything Claude Code
-- optional helper scripts copied into your user Claude folder
-- optional templates copied into your user Claude folder
-
-### Optional extras
-- Ruflo MCP
-- Prompt Improver plugin
-- Code Review Graph plugin
-- Taskmaster AI MCP
-- Claude Mem plugin
-- Document Skills plugin
-
----
-
 ## What “global” means here
 
-This setup uses your **user-level Claude folder**:
+This setup uses your **user-level Claude folder**.
 
+### Windows
 ```text
 %USERPROFILE%\.claude
 ```
 
+### macOS and Linux
+```text
+~/.claude
+```
+
 That means the main files live here:
 
-- `%USERPROFILE%\.claude\settings.json`
-- `%USERPROFILE%\.claude\CLAUDE.md`
-- `%USERPROFILE%\.claude\rules\`
-- `%USERPROFILE%\.claude\helpers\`
-- `%USERPROFILE%\.claude\templates\`
+- `settings.json`
+- `CLAUDE.md`
+- `rules/`
+- `helpers/`
+- `templates/`
 
 Because of that, the setup works across:
 
@@ -99,18 +135,17 @@ A few tools may still create repo-local state later. That is normal.
 
 Use this guide if:
 
-- you are on Windows
-- you want to use Command Prompt
 - you want one setup for all projects
-- you want the easiest known-working flow
+- you want a reusable user-level Claude Code configuration
+- you want a straightforward installation flow
+- you want optional plugins and MCP tools only after the core setup works
 
 ## Important notes before you begin
 
-- Run all commands in **Windows Command Prompt (CMD)**.
-- Do not switch between CMD and PowerShell during setup unless you know why.
 - Install the **core setup first**.
-- Only install the optional plugins and MCP tools after the core setup works.
-- If a plugin or MCP tool fails, your core setup can still work fine.
+- Add optional plugins and MCP tools only after the base setup works.
+- If one optional tool fails, your main setup can still work fine.
+- Keep your user-level `.claude` folder clean and intentional.
 
 ---
 
@@ -118,11 +153,11 @@ Use this guide if:
 
 This is the shortest safe path.
 
-## Step 0 - Check prerequisites in CMD
+## Step 0 — Check prerequisites
 
-Open **Command Prompt** and run:
+Run these commands in your terminal:
 
-```cmd
+```bash
 node -v
 npm -v
 claude --version
@@ -134,25 +169,26 @@ You want:
 - Node.js 20+
 - npm 9+
 - Git installed
-- Claude Code installed and recognized in PATH
+- Claude Code installed and available in PATH
 
-If `claude` is not installed, run:
+If `claude` is not installed:
 
-```cmd
+```bash
 npm install -g @anthropic-ai/claude-code
 claude --version
 ```
 
 Optional, only if you intentionally want to skip permission checks during setup:
 
-```cmd
+```bash
 claude --dangerously-skip-permissions
 ```
 
-## Step 1 - Clone this repository
+---
 
-Example location:
+## Step 1 — Clone this repository
 
+### Windows
 ```cmd
 D:
 mkdir Claude
@@ -161,8 +197,19 @@ git clone https://github.com/satyamamarpandey/OptiClaude.git
 cd /d D:\Claude\OptiClaude
 ```
 
-## Step 2 - Create your global Claude folders
+### macOS / Linux
+```bash
+mkdir -p ~/Claude
+cd ~/Claude
+git clone https://github.com/satyamamarpandey/OptiClaude.git
+cd ~/Claude/OptiClaude
+```
 
+---
+
+## Step 2 — Create your global Claude folders
+
+### Windows
 ```cmd
 mkdir "%USERPROFILE%\.claude"
 mkdir "%USERPROFILE%\.claude\rules"
@@ -170,8 +217,19 @@ mkdir "%USERPROFILE%\.claude\helpers"
 mkdir "%USERPROFILE%\.claude\templates"
 ```
 
-## Step 3 - Copy OptiClaude global files
+### macOS / Linux
+```bash
+mkdir -p ~/.claude
+mkdir -p ~/.claude/rules
+mkdir -p ~/.claude/helpers
+mkdir -p ~/.claude/templates
+```
 
+---
+
+## Step 3 — Copy OptiClaude global files
+
+### Windows
 ```cmd
 copy /Y "settings.json" "%USERPROFILE%\.claude\settings.json"
 copy /Y "CLAUDE.md" "%USERPROFILE%\.claude\CLAUDE.md"
@@ -179,20 +237,29 @@ xcopy /E /I /Y "helpers\*" "%USERPROFILE%\.claude\helpers\"
 if exist "templates" xcopy /E /I /Y "templates\*" "%USERPROFILE%\.claude\templates\"
 ```
 
+### macOS / Linux
+```bash
+cp settings.json ~/.claude/settings.json
+cp CLAUDE.md ~/.claude/CLAUDE.md
+cp -R helpers/. ~/.claude/helpers/
+if [ -d templates ]; then cp -R templates/. ~/.claude/templates/; fi
+```
+
 ### Important note about `templates/data`
 
-Because this uses `xcopy /E`, it also copies everything inside:
+Because the copy commands are recursive, they also copy everything inside:
 
 ```text
-templates\data\
+templates/data/
 ```
 
 So you do **not** need a separate copy command for the files inside `templates/data`.
 
-## Step 4 - Install Everything Claude Code rules globally
+---
 
-Go to your working folder and clone the ECC repo:
+## Step 4 — Install Everything Claude Code rules globally
 
+### Windows
 ```cmd
 cd /d D:\Claude
 git clone https://github.com/affaan-m/everything-claude-code.git
@@ -200,8 +267,17 @@ cd /d D:\Claude\everything-claude-code
 npm install
 ```
 
-Clean old rules and recreate folders:
+### macOS / Linux
+```bash
+cd ~/Claude
+git clone https://github.com/affaan-m/everything-claude-code.git
+cd ~/Claude/everything-claude-code
+npm install
+```
 
+### Recreate rules folders cleanly
+
+#### Windows
 ```cmd
 rmdir /S /Q "%USERPROFILE%\.claude\rules"
 mkdir "%USERPROFILE%\.claude\rules"
@@ -210,16 +286,33 @@ mkdir "%USERPROFILE%\.claude\rules\typescript"
 mkdir "%USERPROFILE%\.claude\rules\python"
 ```
 
-Copy each ruleset into the correct folder:
+#### macOS / Linux
+```bash
+rm -rf ~/.claude/rules
+mkdir -p ~/.claude/rules/common
+mkdir -p ~/.claude/rules/typescript
+mkdir -p ~/.claude/rules/python
+```
 
+### Copy each ruleset into the correct folder
+
+#### Windows
 ```cmd
 xcopy /E /I /Y "rules\common\*" "%USERPROFILE%\.claude\rules\common\"
 xcopy /E /I /Y "rules\typescript\*" "%USERPROFILE%\.claude\rules\typescript\"
 xcopy /E /I /Y "rules\python\*" "%USERPROFILE%\.claude\rules\python\"
 ```
 
-Verify the folders:
+#### macOS / Linux
+```bash
+cp -R rules/common/. ~/.claude/rules/common/
+cp -R rules/typescript/. ~/.claude/rules/typescript/
+cp -R rules/python/. ~/.claude/rules/python/
+```
 
+### Verify the folders
+
+#### Windows
 ```cmd
 dir "%USERPROFILE%\.claude\rules"
 dir "%USERPROFILE%\.claude\rules\common"
@@ -227,28 +320,34 @@ dir "%USERPROFILE%\.claude\rules\typescript"
 dir "%USERPROFILE%\.claude\rules\python"
 ```
 
-## Step 5 - Install the Everything Claude Code plugin
+#### macOS / Linux
+```bash
+ls ~/.claude/rules
+ls ~/.claude/rules/common
+ls ~/.claude/rules/typescript
+ls ~/.claude/rules/python
+```
 
-Run these commands in CMD:
+---
 
-```cmd
+## Step 5 — Install the Everything Claude Code plugin
+
+```bash
 claude plugin marketplace add affaan-m/everything-claude-code
 claude plugin install everything-claude-code@everything-claude-code --scope user
 ```
 
-## Step 6 - Open Claude Code and test it
+---
+
+## Step 6 — Open Claude Code and test it
 
 Open Claude Code:
 
-```cmd
+```bash
 claude
 ```
 
-If prompted, choose:
-
-```text
-Yes, I trust this folder
-```
+If prompted, choose the trust option for the folder.
 
 Once Claude Code opens, run:
 
@@ -272,163 +371,20 @@ At this point, your **core global setup is working**.
 
 ---
 
-# Exact tested setup flow
-
-This section matches the flow that was actually verified to work.
-
-## Part 0 - Check prerequisites in CMD
-
-```cmd
-node -v
-npm -v
-claude --version
-```
-
-If Claude Code is missing:
-
-```cmd
-npm install -g @anthropic-ai/claude-code
-```
-
-Optional:
-
-```cmd
-claude --dangerously-skip-permissions
-```
-
-## Part 1 - One-time global setup for all projects
-
-### Step 1 - Open CMD and check basics
-
-```cmd
-git --version
-node -v
-npm -v
-```
-
-### Step 1.1 - Clone Everything Claude Code
-
-Example:
-
-```cmd
-D:
-mkdir Claude
-cd /d D:\Claude
-
-git clone https://github.com/affaan-m/everything-claude-code.git
-cd everything-claude-code
-npm install
-```
-
-### Step 2 - Make sure `.claude` global folders exist
-
-```cmd
-mkdir "%USERPROFILE%\.claude"
-mkdir "%USERPROFILE%\.claude\rules"
-mkdir "%USERPROFILE%\.claude\templates"
-mkdir "%USERPROFILE%\.claude\helpers"
-```
-
-### Step 3 - Clean old wrongly copied rules
-
-```cmd
-rmdir /S /Q "%USERPROFILE%\.claude\rules"
-mkdir "%USERPROFILE%\.claude\rules"
-```
-
-### Step 4 - Create proper rule subfolders
-
-```cmd
-mkdir "%USERPROFILE%\.claude\rules\common"
-mkdir "%USERPROFILE%\.claude\rules\typescript"
-mkdir "%USERPROFILE%\.claude\rules\python"
-```
-
-### Step 5 - Copy each ruleset into its own folder
-
-```cmd
-xcopy /E /I /Y "rules\common\*" "%USERPROFILE%\.claude\rules\common\"
-xcopy /E /I /Y "rules\typescript\*" "%USERPROFILE%\.claude\rules\typescript\"
-xcopy /E /I /Y "rules\python\*" "%USERPROFILE%\.claude\rules\python\"
-```
-
-### Step 6 - Verify the folders exist
-
-```cmd
-dir "%USERPROFILE%\.claude\rules"
-dir "%USERPROFILE%\.claude\rules\common"
-dir "%USERPROFILE%\.claude\rules\typescript"
-dir "%USERPROFILE%\.claude\rules\python"
-```
-
-## Part 2 - Global Claude Code settings for all projects
-
-### Step 7 - Open `settings.json`
-
-```cmd
-notepad "%USERPROFILE%\.claude\settings.json"
-```
-
-Then paste the repository `settings.json` content into that file.
-
-If you prefer the easier method, just copy the file directly instead:
-
-```cmd
-cd /d D:\Claude\OptiClaude
-copy /Y "settings.json" "%USERPROFILE%\.claude\settings.json"
-copy /Y "CLAUDE.md" "%USERPROFILE%\.claude\CLAUDE.md"
-xcopy /E /I /Y "helpers\*" "%USERPROFILE%\.claude\helpers\"
-if exist "templates" xcopy /E /I /Y "templates\*" "%USERPROFILE%\.claude\templates\"
-```
-
-## Part 3 - Plugin install inside Claude Code
-
-Open Claude Code:
-
-```cmd
-claude
-```
-
-At that screen, select:
-
-```text
-Yes, I trust this folder
-```
-
-Once Claude Code opens, run:
-
-```text
-/reload-plugins
-```
-
-Test one of them:
-
-```text
-/everything-claude-code:plan "test"
-```
-
-Then exit:
-
-```text
-/exit
-```
-
----
-
 # Core setup in plain English
 
-If you are totally new, here is what you are actually doing:
+If you are completely new, this is what you are doing:
 
-1. Installing Claude Code so the `claude` command works in CMD.
-2. Creating your global Claude folder in `%USERPROFILE%\.claude`.
-3. Copying this repo's `settings.json`, `CLAUDE.md`, `helpers`, and `templates` there.
+1. Installing Claude Code so the `claude` command works.
+2. Creating your global Claude folder in your user directory.
+3. Copying this repo’s `settings.json`, `CLAUDE.md`, `helpers`, and `templates` into that folder.
 4. Cloning Everything Claude Code and copying its rules into your global rules folder.
 5. Installing the Everything Claude Code plugin in user scope.
-6. Opening Claude Code once and testing that the plugin loads.
+6. Opening Claude Code once and confirming the plugin loads.
 
 That is the full core setup.
 
-If that works, everything else below is optional.
+If that works, everything below is optional.
 
 ---
 
@@ -440,124 +396,90 @@ Install them only after the core setup works.
 
 ---
 
-## Optional 1 - Ruflo CLI globally
+## Optional 1 — Ruflo CLI globally
 
-If you want to use the `ruflo` command directly in CMD, run:
+If you want to use the `ruflo` command directly:
 
-```cmd
+```bash
 npm install -g ruflo@latest
 ruflo --version
 ```
 
-## Optional 2 - Add Ruflo to Claude Code globally
+## Optional 2 — Add Ruflo to Claude Code globally
 
-This is the important part if you want Ruflo available across all sessions and projects.
-
-On Windows, run:
-
-```cmd
+```bash
 claude mcp add --scope user --transport stdio ruflo -- cmd /c npx -y ruflo@latest mcp start
-```
-
-Then verify:
-
-```cmd
 claude mcp list
 ```
 
 ### One-time cleanup if you added Ruflo locally before
 
-```cmd
-cd /d D:\Claude
+```bash
 claude mcp remove "ruflo" -s local
 claude mcp list
 ```
 
+> On macOS and Linux, if the Windows-style `cmd /c` wrapper does not apply, adapt the launch command for your shell.
+
 ---
 
-## Optional 3 - Prompt Improver plugin globally
+## Optional 3 — Prompt Improver plugin globally
 
-### Add the marketplace
-
-```cmd
+```bash
 claude plugin marketplace add severity1/severity1-marketplace
-```
-
-### Install the plugin
-
-```cmd
 claude plugin install prompt-improver@severity1-marketplace --scope user
 ```
 
 ---
 
-## Optional 4 - Reduce token usage with Code Review Graph
+## Optional 4 — Reduce token usage with Code Review Graph
 
 ### Install `uv` first if missing
 
-Option A, easiest from CMD with WinGet:
-
+#### Windows
 ```cmd
 winget install --id=astral-sh.uv -e
 ```
 
-### Add the marketplace
-
-```cmd
-claude plugin marketplace add tirth8205/code-review-graph
+#### macOS
+```bash
+brew install uv
 ```
 
-### Install the plugin
+#### Linux
+Install `uv` using your preferred package manager or the official install method for your distro.
 
-```cmd
+### Add the marketplace and install
+
+```bash
+claude plugin marketplace add tirth8205/code-review-graph
 claude plugin install code-review-graph@code-review-graph --scope user
 ```
 
 ---
 
-## Optional 5 - Taskmaster AI MCP globally
+## Optional 5 — Taskmaster AI MCP globally
 
-If you want Taskmaster available across all projects and sessions, use **user scope**:
-
-```cmd
+```bash
 claude mcp add --scope user taskmaster-ai -- npx -y task-master-ai
-```
-
-Then verify:
-
-```cmd
 claude mcp list
 ```
 
 ---
 
-## Optional 6 - Claude Mem globally
+## Optional 6 — Claude Mem globally
 
-### Add the marketplace
-
-```cmd
+```bash
 claude plugin marketplace add thedotmack/claude-mem
-```
-
-### Install the plugin
-
-```cmd
 claude plugin install claude-mem@thedotmack --scope user
 ```
 
 ---
 
-## Optional 7 - Document Skills globally
+## Optional 7 — Document Skills globally
 
-### Add the marketplace
-
-```cmd
+```bash
 claude plugin marketplace add anthropics/skills
-```
-
-### Install the plugin
-
-```cmd
 claude plugin install document-skills@anthropic-agent-skills --scope user
 ```
 
@@ -569,25 +491,25 @@ After the core setup and any optional extras you want, run these checks.
 
 ## Check Claude Code
 
-```cmd
+```bash
 claude --version
 ```
 
 ## Check plugins
 
-```cmd
+```bash
 claude plugin list
 ```
 
 ## Check MCP servers
 
-```cmd
+```bash
 claude mcp list
 ```
 
 ## Open Claude Code once more
 
-```cmd
+```bash
 claude
 ```
 
@@ -595,11 +517,6 @@ Inside Claude Code, run:
 
 ```text
 /reload-plugins
-```
-
-Then test:
-
-```text
 /everything-claude-code:plan "test"
 ```
 
@@ -611,45 +528,31 @@ If that works, your setup is ready.
 
 ## `claude` is not recognized
 
-Run:
-
-```cmd
+```bash
 npm install -g @anthropic-ai/claude-code
 claude --version
 ```
 
-Then close CMD and open a fresh CMD window.
+Then open a fresh terminal window.
 
 ## `git` is not recognized
 
-Install Git for Windows:
+Install Git, then open a fresh terminal and verify:
 
-```cmd
-winget install --id Git.Git -e
-```
-
-Then open a fresh CMD window and verify:
-
-```cmd
+```bash
 git --version
 ```
 
 ## `node` or `npm` is not recognized
 
-Install Node.js LTS:
-
-```cmd
-winget install --id OpenJS.NodeJS.LTS -e
-```
-
-Then open a fresh CMD window.
+Install Node.js LTS, then open a fresh terminal window.
 
 ## `uv` is not recognized
 
-Install it:
+Install it using the platform-appropriate method, then verify:
 
-```cmd
-winget install --id=astral-sh.uv -e
+```bash
+uv --version
 ```
 
 ## Plugin mismatch
@@ -658,7 +561,7 @@ If Claude shows plugin errors at startup, make sure plugins enabled in `settings
 
 Verify installed plugins with:
 
-```cmd
+```bash
 claude plugin list
 ```
 
@@ -669,9 +572,9 @@ If needed, either:
 
 ## Taskmaster fails to install
 
-Try this first:
+Try:
 
-```cmd
+```bash
 npx -y task-master-ai --help
 ```
 
@@ -679,45 +582,29 @@ If that fails too, fix Node.js and npm first.
 
 Then retry:
 
-```cmd
+```bash
 claude mcp add --scope user taskmaster-ai -- npx -y task-master-ai
 ```
 
 ## Ruflo exists in multiple scopes
 
-Remove the local copy if needed:
-
-```cmd
+```bash
 claude mcp remove "ruflo" -s local
 claude mcp list
 ```
 
 ## Hook errors after startup
 
-Check that these files exist:
+Check that these files exist in your user Claude folder:
 
-```text
-%USERPROFILE%\.claude\helpers\hook-handler.cjs
-%USERPROFILE%\.claude\helpers\auto-memory-hook.mjs
-```
+- `helpers/hook-handler.cjs`
+- `helpers/auto-memory-hook.mjs`
 
-If they are missing, copy the helpers again:
-
-```cmd
-cd /d D:\Claude\OptiClaude
-xcopy /E /I /Y "helpers\*" "%USERPROFILE%\.claude\helpers\"
-```
+If they are missing, copy the helpers again from this repo.
 
 ## Templates are missing
 
-Copy them again:
-
-```cmd
-cd /d D:\Claude\OptiClaude
-xcopy /E /I /Y "templates\*" "%USERPROFILE%\.claude\templates\"
-```
-
-Because `xcopy /E` is recursive, it also copies `templates\data\` and everything inside it.
+Copy them again from this repo into your user Claude folder. The recursive copy also includes `templates/data/`.
 
 ---
 
@@ -725,6 +612,7 @@ Because `xcopy /E` is recursive, it also copies `templates\data\` and everything
 
 If you want to redo the setup cleanly:
 
+### Windows
 ```cmd
 rmdir /S /Q "%USERPROFILE%\.claude\rules"
 rmdir /S /Q "%USERPROFILE%\.claude\helpers"
@@ -732,6 +620,16 @@ rmdir /S /Q "%USERPROFILE%\.claude\templates"
 mkdir "%USERPROFILE%\.claude\rules"
 mkdir "%USERPROFILE%\.claude\helpers"
 mkdir "%USERPROFILE%\.claude\templates"
+```
+
+### macOS / Linux
+```bash
+rm -rf ~/.claude/rules
+rm -rf ~/.claude/helpers
+rm -rf ~/.claude/templates
+mkdir -p ~/.claude/rules
+mkdir -p ~/.claude/helpers
+mkdir -p ~/.claude/templates
 ```
 
 Then copy the files again from OptiClaude.
@@ -758,17 +656,11 @@ Use this order for the smoothest experience:
 
 No.
 
-This command:
-
-```cmd
-xcopy /E /I /Y "templates\*" "%USERPROFILE%\.claude\templates\"
-```
-
-already copies:
+The recursive copy command already copies:
 
 - all top-level template markdown files
 - the `data` folder
-- all files inside `templates\data\`
+- all files inside `templates/data/`
 
 ## Do I need all the optional plugins?
 
